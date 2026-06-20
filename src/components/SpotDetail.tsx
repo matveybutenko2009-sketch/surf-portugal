@@ -1,15 +1,12 @@
 import { Star, RefreshCw, AlertCircle, Waves } from 'lucide-react';
+import { lazy, Suspense } from 'react';
 import type { Spot, SpotForecast } from '../types';
 import { bestScoreToday, calcSurfScore } from '../utils/surfScore';
 import { degToCompass } from '../utils/wind';
 import { CompassArrow } from './CompassArrow';
 import { StatBox } from './StatBox';
-import { lazy, Suspense } from 'react';
-const WeatherChart = lazy(() => import('./WeatherChart').then(m => ({ default: m.WeatherChart })));
 import { HourlyTable } from './HourlyTable';
-import { TideSection } from './TideSection';
-import { BuoyStub } from './BuoyStub';
-import { SpotCamera } from './SpotCamera';
+const WeatherChart = lazy(() => import('./WeatherChart').then(m => ({ default: m.WeatherChart })));
 
 interface Props {
   spot: Spot;
@@ -22,12 +19,8 @@ interface Props {
 }
 
 export function SpotDetail({ spot, forecast, loading, error, isFavorite, onToggleFavorite, onRefresh }: Props) {
-  // Use the first upcoming hour as "now"
   const now = forecast?.hourly[0] ?? null;
-
-  // Lagoon / sheltered beaches may have no swell data (all zeros from Marine API)
   const hasWaveData = now !== null && (now.waveHeight > 0 || now.swellHeight > 0);
-
   const score = hasWaveData ? calcSurfScore(now!, spot.offshoreWindDir) : null;
   const bestScore = (forecast && hasWaveData) ? bestScoreToday(forecast.hourly, spot.offshoreWindDir) : null;
 
@@ -65,7 +58,12 @@ export function SpotDetail({ spot, forecast, loading, error, isFavorite, onToggl
           <div>
             <p className="font-semibold text-white text-lg">{score.label}</p>
             {bestScore && bestScore.score > score.score && (
-              <p className="text-xs text-slate-400">Best today: <span className={`font-bold ${bestScore.color} px-1.5 py-0.5 rounded`}>{bestScore.score.toFixed(0)} — {bestScore.label}</span></p>
+              <p className="text-xs text-slate-400">
+                Best today:{' '}
+                <span className={`font-bold ${bestScore.color} px-1.5 py-0.5 rounded`}>
+                  {bestScore.score.toFixed(0)} — {bestScore.label}
+                </span>
+              </p>
             )}
           </div>
         </div>
@@ -88,10 +86,9 @@ export function SpotDetail({ spot, forecast, loading, error, isFavorite, onToggl
         </div>
       )}
 
-      {/* Stats grid */}
+      {/* Stats */}
       {now && (
         <>
-          {/* No wave data notice for lagoon / sheltered beaches */}
           {!hasWaveData && (
             <div className="flex items-center gap-2 bg-slate-800/40 border border-slate-700/30 rounded-xl px-4 py-3 text-slate-400 text-sm">
               <Waves size={16} className="shrink-0 text-slate-500" />
@@ -112,7 +109,7 @@ export function SpotDetail({ spot, forecast, loading, error, isFavorite, onToggl
             <StatBox label="Air Temp" value={now.airTemp.toFixed(1)} unit="°C" sub={`UV ${now.uvIndex.toFixed(0)}`} />
           </div>
 
-          {/* Directions row */}
+          {/* Compass directions */}
           <div className="flex gap-6 items-center bg-slate-800/40 border border-slate-700/30 rounded-xl p-4">
             <div className="flex flex-col items-center gap-1">
               <CompassArrow direction={now.swellDirection} size={64} />
@@ -130,7 +127,7 @@ export function SpotDetail({ spot, forecast, loading, error, isFavorite, onToggl
         </>
       )}
 
-      {/* Chart */}
+      {/* 7-day chart */}
       {forecast && (
         <Suspense fallback={<div className="h-64 rounded-xl bg-slate-800/60 animate-pulse" />}>
           <WeatherChart hourly={forecast.hourly} />
@@ -141,13 +138,6 @@ export function SpotDetail({ spot, forecast, loading, error, isFavorite, onToggl
       {forecast && (
         <HourlyTable hourly={forecast.hourly} offshoreWindDir={spot.offshoreWindDir} />
       )}
-
-      {/* Camera */}
-      <SpotCamera spot={spot} />
-
-      {/* Tide + Buoy */}
-      <TideSection lat={spot.lat} lng={spot.lng} />
-      <BuoyStub />
 
       {forecast && (
         <p className="text-xs text-slate-600 text-center">

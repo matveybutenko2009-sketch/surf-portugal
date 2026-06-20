@@ -5,7 +5,6 @@ export interface Spot {
   subregion?: string; // municipality within region (e.g. 'Lagos' within 'Algarve')
   lat: number;
   lng: number;
-  cameraUrl?: string;
   offshoreWindDir: number;
 }
 

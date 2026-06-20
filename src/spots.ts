@@ -11,7 +11,6 @@ const SURF_SPOTS: Spot[] = [
     lat: 38.68,
     lng: -9.34,
     offshoreWindDir: 90,
-    cameraUrl: 'https://www.beachcam.pt/camsite/carcavelos/',
   },
   {
     id: 'caparica',
@@ -20,7 +19,6 @@ const SURF_SPOTS: Spot[] = [
     lat: 38.64,
     lng: -9.23,
     offshoreWindDir: 90,
-    cameraUrl: 'https://www.beachcam.pt/camsite/costa-da-caparica/',
   },
   {
     id: 'guincho',
@@ -38,7 +36,6 @@ const SURF_SPOTS: Spot[] = [
     lat: 38.99,
     lng: -9.42,
     offshoreWindDir: 90,
-    cameraUrl: 'https://www.beachcam.pt/camsite/ribeira-dilhas/',
   },
   {
     id: 'supertubos',
@@ -47,7 +44,6 @@ const SURF_SPOTS: Spot[] = [
     lat: 39.34,
     lng: -9.36,
     offshoreWindDir: 90,
-    cameraUrl: 'https://www.beachcam.pt/camsite/supertubos/',
   },
   {
     id: 'praia-do-norte',
@@ -60,13 +56,13 @@ const SURF_SPOTS: Spot[] = [
   // ── Algarve – Costa Vicentina ───────────────────────────────────────────────
   { id: 'odeceixe',      name: 'Praia de Odeceixe',    region: 'Algarve', subregion: 'Aljezur',      lat: 37.43, lng: -8.77, offshoreWindDir: 90 },
   { id: 'monte-clerigo', name: 'Praia de Monte Clérigo', region: 'Algarve', subregion: 'Aljezur',    lat: 37.32, lng: -8.88, offshoreWindDir: 90 },
-  { id: 'arrifana',      name: 'Praia de Arrifana',    region: 'Algarve', subregion: 'Aljezur',      lat: 37.30, lng: -8.87, offshoreWindDir: 90, cameraUrl: 'https://www.beachcam.pt/camsite/arrifana/' },
+  { id: 'arrifana',      name: 'Praia de Arrifana',    region: 'Algarve', subregion: 'Aljezur',      lat: 37.30, lng: -8.87, offshoreWindDir: 90 },
   { id: 'bordeira',      name: 'Praia da Bordeira',    region: 'Algarve', subregion: 'Aljezur',      lat: 37.19, lng: -8.90, offshoreWindDir: 90 },
-  { id: 'praia-do-amado', name: 'Praia do Amado',      region: 'Algarve', subregion: 'Aljezur',      lat: 37.16, lng: -8.91, offshoreWindDir: 90, cameraUrl: 'https://www.beachcam.pt/camsite/amado/' },
+  { id: 'praia-do-amado', name: 'Praia do Amado',      region: 'Algarve', subregion: 'Aljezur',      lat: 37.16, lng: -8.91, offshoreWindDir: 90 },
   { id: 'castelejo',     name: 'Praia do Castelejo',   region: 'Algarve', subregion: 'Vila do Bispo', lat: 37.09, lng: -8.94, offshoreWindDir: 90 },
   // ── Algarve – Sagres ────────────────────────────────────────────────────────
   { id: 'beliche',   name: 'Praia de Beliche',  region: 'Algarve', subregion: 'Vila do Bispo', lat: 37.02, lng: -8.98, offshoreWindDir: 45 },
-  { id: 'tonel',     name: 'Praia do Tonel',    region: 'Algarve', subregion: 'Vila do Bispo', lat: 37.01, lng: -8.94, offshoreWindDir: 30, cameraUrl: 'https://www.beachcam.pt/camsite/tonel/' },
+  { id: 'tonel',     name: 'Praia do Tonel',    region: 'Algarve', subregion: 'Vila do Bispo', lat: 37.01, lng: -8.94, offshoreWindDir: 30 },
   { id: 'mareta',    name: 'Praia da Mareta',   region: 'Algarve', subregion: 'Vila do Bispo', lat: 37.00, lng: -8.93, offshoreWindDir: 0 },
   { id: 'martinhal', name: 'Praia do Martinhal', region: 'Algarve', subregion: 'Vila do Bispo', lat: 37.02, lng: -8.91, offshoreWindDir: 0 },
   // ── Algarve – Costa Sul ──────────────────────────────────────────────────────

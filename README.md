@@ -2,7 +2,7 @@
 
 PWA для прогноза серфинга на пляжах Португалии.
 
-**Данные:** Open-Meteo (волны + погода) · beachcam.pt (камеры) · WorldTides (приливы, опционально)  
+**Данные:** Open-Meteo (волны + погода, без ключа)
 **183 пляжа** — от Назаре до Алгарве, с поиском, избранным и surf score 0–10.
 
 ## Запуск локально
@@ -12,20 +12,9 @@ npm install
 npm run dev
 ```
 
-## Переменные окружения
-
-Скопируй `.env.example` → `.env` и вставь ключи:
-
-| Переменная | Описание |
-|---|---|
-| `VITE_TIDE_API_KEY` | WorldTides API key (опционально, free tier) |
-
-> `VITE_`-переменные попадают в публичный бандл — не кладите туда секреты.
-
 ## Деплой
 
-Build output: `dist/`  
-Build command: `npm run build`
+Build output: `dist/` · Build command: `npm run build`
 
-- **Vercel**: подключи репо, настройки по умолчанию подойдут (`vercel.json` уже есть).  
+- **Vercel**: `vercel.json` уже есть, подключи репо — всё автоматически.
 - **Cloudflare Pages**: `public/_redirects` уже есть для SPA-fallback.
